@@ -163,12 +163,12 @@ class LDAPUserManager(FilebasedUserManager,
 
                 # version check: github repository
                 type="github_release",
-                user="gillg",
+                user="jhmscott",
                 repo="OctoPrint-LDAP",
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/gillg/OctoPrint-LDAP/archive/{target_version}.zip"
+                pip="https://github.com/jhmscott/OctoPrint-LDAP/archive/{target_version}.zip"
             )
         )
 
@@ -185,7 +185,9 @@ class LDAPUserManager(FilebasedUserManager,
                 ldap_uri=None,
                 ldap_tls_reqcert='demand',
                 ldap_search_base=None,
-                groups=None
+                groups=None,
+                bind_user=None,
+                bind_ps=None
             )
         )
 
