@@ -76,9 +76,10 @@ class LDAPUserManager(FilebasedUserManager,
 
         try:
             connection = self.getLDAPClient()
+            connection.bind_s(settings().get(["accessControl", "bind_user"]), settings().get(["accessControl", "bind_pw"]))
 
             #verify user)
-            result = connection.search_s(ldap_search_base, ldap.SCOPE_SUBTREE, "uid=" + userid)
+            result = connection.search_s(ldap_search_base, ldap.SCOPE_SUBTREE, "sAMAcountName=" + userid)
             if result is None or len(result) == 0:
                 return None
             self._logger.error("LDAP-AUTH: User found!")
