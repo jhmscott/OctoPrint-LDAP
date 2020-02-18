@@ -1,6 +1,8 @@
 OctoPrint LDAP auth Plugin
 =========================
 
+This is a project originally developed by gillg, I've updated to add support for active Directory
+
 This plugin allow users to be connected using an LDAP server.
 This system works 
 
@@ -40,6 +42,6 @@ accessControl:
 
 #### Installation
 
-You can install it using ```pip install https://github.com/gillg/OctoPrint-LDAP/archive/master.zip```
+You can install it using ```pip install https://github.com/jhmscott/OctoPrint-LDAP/archive/master.zip```
 
 Or with plugin manager into OctoPrint
