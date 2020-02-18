@@ -187,7 +187,7 @@ class LDAPUserManager(FilebasedUserManager,
                 ldap_search_base=None,
                 groups=None,
                 bind_user=None,
-                bind_ps=None
+                bind_pw=None
             )
         )
 
