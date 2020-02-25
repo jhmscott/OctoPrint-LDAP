@@ -35,7 +35,7 @@ accessControl:
   ldap_search_base: dc=server,dc=com
   groups: FullDNofGroupName
   bind_user: FullDNofBindUser
-  bind_pw: password of bind user
+  bind_pw: PasswordOfBindUser
 ```
 
 #### Groups
