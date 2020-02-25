@@ -24,10 +24,10 @@ plugin_description = "LDAP Auth provider"
 plugin_author = "Guillaume GILL"
 
 # The plugin's author's mail address.
-plugin_author_email = "guillaume.gill@petitchinois.net"
+plugin_author_email = "justinhmscott@gmail.com"
 
 # The plugin's homepage URL. Can be overwritten within OctoPrint's internal data via __plugin_url__ in the plugin module
-plugin_url = "https://github.com/gillg/OctoPrint-LDAP"
+plugin_url = "https://github.com/jhmscott/OctoPrint-LDAP"
 
 # The plugin's license. Can be overwritten within OctoPrint's internal data via __plugin_license__ in the plugin module
 plugin_license = "AGPLv3"
