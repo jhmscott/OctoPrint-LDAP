@@ -33,7 +33,9 @@ accessControl:
   ldap_uri: ldaps://ldap.server.com/
   ldap_tls_reqcert: demand
   ldap_search_base: dc=server,dc=com
-  groups: TheGroupName
+  groups: FullDNofGroupName
+  bind_user: FullDNofBindUser
+  bind_pw: password of bind user
 ```
 
 #### Groups
