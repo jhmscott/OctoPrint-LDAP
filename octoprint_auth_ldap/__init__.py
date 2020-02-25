@@ -79,33 +79,33 @@ class LDAPUserManager(FilebasedUserManager,
             connection.bind_s(settings().get(["accessControl", "bind_user"]), settings().get(["accessControl", "bind_pw"]))
 
             #verify user)
-            result = connection.search_s(ldap_search_base, ldap.SCOPE_SUBTREE, "sAMAccountName=" + userid)
+            result = connection.search_s(ldap_search_base, ldap.SCOPE_SUBTREE, "(&(sAMAccountName=" + userid + ")(memberOf=" + groups + ")")
             if result is None or len(result) == 0:
                 return None
             self._logger.error("LDAP-AUTH: User found!")
 
             #check group(s)
-            if groups is not None:
-                self._logger.error("LDAP-AUTH: Checking Groups...")
-                group_filter = ""
-                if "," in groups:
-                    group_list = groups.split(",")
-                    group_filter = "(|"
-                    for g in group_list:
-                        group_filter = group_filter + "(cn=%s)" % g
-                    group_filter = group_filter + ")"
-                else:
-                    group_filter = "(cn=%s)" % groups
+            #if groups is not None:
+            #    self._logger.error("LDAP-AUTH: Checking Groups...")
+            #    group_filter = ""
+            #    if "," in groups:
+            #        group_list = groups.split(",")
+            #        group_filter = "(|"
+            #        for g in group_list:
+            #            group_filter = group_filter + "(cn=%s)" % g
+            #        group_filter = group_filter + ")"
+            #    else:
+            #        group_filter = "(cn=%s)" % groups
 
-                query = "(&(objectClass=posixGroup)%s(memberUid=%s))" % (group_filter, userid)
-                self._logger.error("LDAP-AUTH QUERY:" + query)
-                group_result = connection.search_s(ldap_search_base, ldap.SCOPE_SUBTREE, query)
+            #    query = "(&(objectClass=posixGroup)%s(memberUid=%s))" % (group_filter, userid)
+            #    self._logger.error("LDAP-AUTH QUERY:" + query)
+            #    group_result = connection.search_s(ldap_search_base, ldap.SCOPE_SUBTREE, query)
 
-                if group_result is None or len(group_result) == 0:
-                    print("LDAP-AUTH: Group not found")
-                    return None
+            #    if group_result is None or len(group_result) == 0:
+            #        print("LDAP-AUTH: Group not found")
+            #        return None
 
-                self._logger.error("LDAP-AUTH: Group matched!")
+            #    self._logger.error("LDAP-AUTH: Group matched!")
 
             #disconnect
             connection.unbind_s()
